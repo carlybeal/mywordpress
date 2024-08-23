@@ -1,0 +1,773 @@
+/*
+Theme Name: Carly's Shop
+Text Domain: Carly's Shop
+Description: Carly's Shop with a few categories and a way to filter through the products easily. 
+Author: Carly Beal
+Version: 1.0
+*/
+
+/* #region Universal */
+* { /* Universal selector; applies this rule to every element */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #70acb1;
+    --secondary-color: #617c86;
+    --light-color: #f4f4f6;
+    --dark-color: #111;
+    --blue: #007bff;
+    --black: #000000;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #ee3577;
+    --red: #dc3545;
+    --orange: #f68e62;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #767575;
+    --gray-dark: #434242;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #c2c2c2;
+    --lightgray: #eeeeee;
+    --dark: #434242;
+    --hover-color: #70acb1;
+    --header-color: #59606d;
+    --dropdown-color: #626770;
+    --dropdown-submenu-color: #6c6e71;
+}
+
+body { /* mine */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background: #fff;
+    overflow-x: hidden;
+}
+
+a { /* Link stylization*/ /* mine */
+    text-decoration: none; /* Takes away underlines of links*/
+    color: var(--black);
+    cursor: pointer;
+}
+
+ul { /* mine */
+    list-style: none;
+}
+
+img { /* mine */
+    max-width: 100%;
+}
+
+.header-padding {
+    margin: 0;
+    padding-top: 74px;
+}
+/* #endregion */
+
+
+/* #region Navbar */
+.navbar {
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    background: var(--header-color);
+    padding: 10px;
+    margin: 0;
+
+}
+
+/* #region Navbar Logo */
+.navbar .logo {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .logo img {
+    margin: 0;
+    padding: 0;
+    max-width: 75px;
+    height: auto;
+    width: 100%;
+}
+
+.navbar .logo a {
+    display: inline-block;
+    color: var(--primary-color);
+}
+/* #endregion */
+
+/* #region Navbar Shop Name */
+.navbar .shop-name {
+    margin-right: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase; /* This makes the text all caps */
+}
+
+.navbar .shop-name a {
+    color: var(--primary-color);
+}
+/* #endregion */
+
+/* #region Navbar Directory */
+.navbar .directory {
+    margin: 0;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.navbar .directory a {
+    padding: 10px 10px;
+    font-weight: bold;
+    transition: 0.5s;
+    color: var(--white);
+}
+/* #endregion */
+
+/* #region Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown a:hover {
+    color: var(--primary-color);
+}
+
+.dropdown .dropdown-btn {
+    background: none;
+    border: none;
+    padding: 10px 10px;
+    font-weight: bold;
+    transition: 0.5s;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.dropdown .dropdown-btn:hover {
+    color: var(--primary-color);
+}
+
+.dropdown-content {
+    font-size: 15px;
+    display: none;
+    position: absolute;
+    background-color: var(--dropdown-color);
+    border-radius: 0px 0px 5px 5px;
+    min-width: 100%;
+    top: calc(100% + 13px);
+    left: 0;
+    padding: 5px 0;
+    z-index: 1;
+    
+}
+
+.dropdown-content a, .dropdown-subcontent a {
+    color: var(--white);
+    padding: 5px 10px;
+    display: block;
+}
+
+.dropdown-content a:hover, .dropdown-subcontent a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-subcontent {
+    display: none;
+    position: absolute;
+    background-color: var(--dropdown-submenu-color);
+    border-radius: 0px 5px 5px 5px;
+    left: 100%;
+    top: 0;
+    min-width: 100%;
+    padding: 5px 0;
+    z-index: 2;
+}
+
+.dropdown-submenu:hover .dropdown-subcontent {
+    display: block;
+}
+/* #endregion */
+
+/* #region Navbar Search Bar */
+.navbar .search-bar {
+    margin-left: auto;
+    width: 300px;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.navbar .search-bar input {
+    width: 100%;
+    padding: 5px 5px 5px 12px;
+    border: none;
+    border-radius: 10px;
+}
+
+.navbar .search-bar input:focus {
+    border: none;
+    outline: none; 
+}
+
+.search-bar .search-icon {
+    position: absolute;
+    top: 50%;
+    left: calc(100% - 35px);
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--black);
+    cursor: pointer;
+}
+/* #endregion */
+
+/* #region Navbar Main Menu */
+.navbar .main-menu {
+    display: flex;
+    align-items: center;
+}
+
+.account .account-btn {
+    background: none;
+    border: none;
+    padding: 10px 10px;
+    font-weight: bold;
+    transition: 0.5s;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.account .account-btn:hover {
+    text-decoration: underline;
+}
+
+.main-menu a i {
+    padding: 10px 10px;
+}
+.account a, .shopping-cart a{
+    color: var(--white); /* Set icon color to white */
+}
+/* #endregion */
+
+/* #region Sidebar & Overlay for it */
+.sidebar-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Hide the sidebar offscreen initially */
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.sidebar-menu.open {
+    right: 0; /* Slide the sidebar into view */
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 10px;
+}
+
+.close-btn {
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #000;
+}
+
+.sidebar-content-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px; /* Optional: Adds padding to the sides */
+}
+
+.sidebar-content-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px; /* Optional: Adds padding to the sides */
+}
+
+.sidebar-content {
+    justify-content: space-between;
+    padding: 0 20px; /* Optional: Adds padding to the sides */
+}
+
+.sidebar-title {
+    font-size: 24px; /* Large font size */
+    font-weight: bold; /* Bold text */
+    text-align: left; /* Align text to the left */
+    color: #000; /* Black text */
+    padding: 0 20px; /* Padding on the left and right */
+}
+
+
+.sidebar-btn {
+    background-color: #fff; /* White background */
+    color: #000; /* Black text */
+    border: 2px solid #000; /* Black border */
+    padding: 10px 15px;
+    margin: 10px 5px; /* Adjust margin to add space between buttons */
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px;
+    flex: 1; /* Makes both buttons take equal space */
+    text-align: center; /* Centers text inside the buttons */
+    white-space: nowrap;
+}
+
+.separator {
+    border-top: 2px solid #000; /* Black line separator */
+    width: 90%;
+    margin: 20px auto; /* Space above and below the line */
+}
+
+.account-info-link {
+    display: block;
+    color: #000; /* Black text */
+    font-size: 18px; /* Larger font size */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+}
+
+.account-info-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Grey out effect */
+    opacity: 0;
+    pointer-events: none; /* Prevent clicks on the overlay */
+    transition: opacity 0.3s ease-in-out;
+    z-index: 900; /* Ensure it’s behind the sidebar but above other content */
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto; 
+}
+/* #endregion */
+
+/* #region Sign Sidebar */
+.signin-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px; /* Adjust width as needed */
+    height: 100%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+
+}
+
+.signin-menu.active {
+    transform: translateX(0);
+    display: block; /* Show when active */
+}
+
+.signin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.back-btn {
+    font-size: 18px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.back-text {
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+.close-btn {
+    font-size: 36px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #000;
+}
+
+.signin-content {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.signin-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.signin-btn:hover {
+    background: #0056b3;
+}
+
+/* #endregion */
+/* #endregion */
+
+
+/* #region Shop Page */
+#product-filter-form {
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    margin-bottom: 15px;
+}
+
+.filter-group h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.products .product {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+/* #endregion */
+
+
+/* #region Footer */
+
+/* Footer Background Color */
+.footer {
+    background-color: #59606d;
+}
+
+/* Center Columns */
+.footer .container {
+    display: flex;
+    justify-content: center;
+    padding-left: 5px;
+}
+
+.footer .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer .footer-grid > div {
+    flex: 1;
+    padding: 0 20px;
+}
+  
+  .footer h4 {
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .footer ul li {
+    line-height: 2.5;
+  }
+  
+  .footer a {
+    color: #ccc;
+  }
+  
+  .footer i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  
+
+ /*  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 30px;
+    justify-content: center;
+  } */
+  
+  .footer .card {
+    margin: 20px 30px 30px 0;
+  }
+  
+  .footer input[type='email'] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px 0;
+  }
+  /* #endregion */
+
+/* #region Utility Classes */
+.container-main {
+	max-width: 1100px;
+}
+.welcome-banner {
+	margin: 0;
+	padding: 0;
+	background-color: #70acb1;
+}
+
+.container-header {
+    position: relative;
+    max-width: 1764px;
+    margin: 0 85px;
+    padding-top: 76px;
+}
+
+.container-header .image-fluid {
+    display: inline;
+    object-fit: cover;
+    width: 1764px;
+    height: 761px;
+}
+
+.container-header .bottom-left {
+    color: #51b3de;
+    font-weight: bold;
+    position: absolute;
+    bottom: 100px;
+    left: 30px;
+}
+.container-shop-now {
+    max-width: 1764px;
+    margin: 0 auto;
+    padding: 15px 15px;
+    background-color: #504d33;
+}
+
+.container-shop-now a {
+    color: var(--black);
+    font-size: 1.8rem;
+    line-height: 1.4;
+    
+    font-weight: bold;
+}
+
+.shop-now-line {
+    text-align: center;
+    width: 100px;
+    height: 3px;
+    background-color: var(--black);
+    border: none;
+    opacity: 1;
+    margin: 10px auto;
+}
+
+
+
+
+.container {
+    max-width: 1764px;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+.container-sm {
+    max-width: 800px;
+    margin: 0 auto; 
+    padding: 0 15px;
+}
+
+/* Card */
+.card {
+    color: var(--white);
+    color: #000;
+    border-radius: 10px; /* Border radius = rounded corners*/
+    padding: 20px;
+}
+
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 13px 20px;
+    color: var(--black);
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-dark {
+    background: var(--dark-color);
+    color: var(--white);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* Text Classes */
+.text-xxl {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.text-xl {
+    font-size: 2.2rem;
+    line-height: 1.4;
+    font-weight: normal;
+}
+
+.text-lg {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    font-weight: normal;
+}
+
+.text-md {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    font-weight: normal;
+}
+
+.text-sm {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    font-weight: normal;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Background */
+.bg-primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.bg-light {
+    background: var(--light-color);
+    color: var(--black);
+}
+
+.bg-dark {
+    background: var(--dark-color);
+    color: var(--white);
+}
+.bg-black {
+    background: #000;
+    color: #fff
+}
+/* #endregion */
+
+
+.filter-group h3 {
+    color: black;
+    font-weight: bold;
+}
+
+
+.shop-container {
+    color: var(--black);
+    display: flex;
+    gap: 20px;
+    /* Space between the filter and the products */
+}
+
+.shop-filter {
+    width: 20%;
+    background-color: #617C86;
+    padding: 20px;
+}
+
+.shop-products {
+    width: 80%;
+}
+
+@media screen and (max-width: 768px) {
+    .shop-container {
+        flex-direction: column;
+    }
+
+    .shop-filter,
+    .shop-products {
+        width: 100%;
+    }
+}
